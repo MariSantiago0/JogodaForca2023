@@ -3,6 +3,8 @@ var qtnErros = 0;
 var acertos = 0;
 var tentativas = "";
 var palavraSecreta = palavras[Math.floor(Math.random() * 6)];
+let mudarDescricao = document.getElementById("descricao");
+
 
 const canvas = document.getElementById("forca");
 const ctx = canvas.getContext("2d");
@@ -11,6 +13,7 @@ desenharPoste();
 desenharBarraSuperior();
 desenharCorda();
 desenharRiscos();
+desenharBase();
 
 window.onkeypress = teclaPressionada;
 
@@ -37,8 +40,8 @@ function teclaPressionada() {
 function addTentativa() {
 	if (!tentativas.includes(event.key)){
 		tentativas = tentativas + event.key;
-		ctx.font = "20px Arial";
-		ctx.fillText("tentativas: " + tentativas.toUpperCase(), 20, 280);
+		ctx.font = "25px Arial";
+		ctx.fillText("	Tentativas: " + tentativas.toUpperCase(), 25, 285);
 	}
 }
 
@@ -52,9 +55,8 @@ function verificaFimJogo() {
 	}
 	if (acertos == palavraSecreta.length) {
 		ctx.font = "20px Arial";
-	    ctx.fillText("Você ganhou!", 200, 100);
-		alert("Aperte R para reiniciar");
 	    window.onkeypress = null;
+		mudarDescricao.innerHTML = "Parabéns, você acertou! Aperte K para reiniciar o jogo";
 		return;
     }
 }
@@ -74,6 +76,12 @@ function desenharBarraSuperior() {
 function desenharCorda() {
 	ctx.moveTo(60, 10);
 	ctx.lineTo(60, 30);
+	ctx.stroke();
+}
+
+function desenharBase(){
+	ctx.moveTo(10, 100);
+	ctx.lineTo(40, 100);
 	ctx.stroke();
 }
 
@@ -145,3 +153,10 @@ function desenharPernaD() {
 	ctx.lineTo(50, 90);
 	ctx.stroke();
 }
+
+document.addEventListener('keydown', (e) => {
+	if (e.key === "k" || e.key === "K" ){
+		window.location.reload()
+	}
+});
+	

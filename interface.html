@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="image/jogo-da-forca.png">
     <title>Jogo da Forca</title>
+    <link rel="stylesheet" href="forca.css">
 </head>
-<body bgcolor="#fc03f0" style="text-align:center;">
-    <h1>Atividade Jogo da Forca</h1>
-    <h2>Digite uma Letra</h2>
-    <canvas id="forca" width="700" height="300" style="border: 1px solid;"></canvas>
+<body  style="text-align:center;">
+    <div clasass="jogoForca">
+        <h1 id="descricao">Digite uma Letra:</h1>
+        <canvas id="forca"  width="750" height="350" style="border: 1px solid; "></canvas>
+        <h2 id="dicas"> </h2>
+    </div>
     <script src="forca.js"></script>
 </body> 
 </html>

@@ -46,7 +46,7 @@ function addTentativa() {
 function verificaFimJogo() {
 	if (qtnErros >=6) {
 		ctx.font = "20px Arial";
-		ctx.fillText("Fim de Jogo! a palavra era: " + palavraSecreta, 200, 100);
+		ctx.fillText("Fim do Jogo! a palavra era: " + palavraSecreta, 200, 100);
 		window.onkeypress = null;
 		return;
 	}

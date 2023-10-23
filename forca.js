@@ -4,6 +4,7 @@ var acertos = 0;
 var tentativas = "";
 var palavraSecreta = palavras[Math.floor(Math.random() * 6)];
 let mudarDescricao = document.getElementById("descricao");
+let mudarDicas = document.getElementById("dicas");
 
 
 const canvas = document.getElementById("forca");
@@ -160,3 +161,11 @@ document.addEventListener('keydown', (e) => {
 	}
 });
 	
+function dicas(numero){
+	return palavraSecreta[numero];
+}
+
+function darDicas(){
+	if ()
+}
+mudarDicas.innerHTML = "Nome sulista da tangerina";

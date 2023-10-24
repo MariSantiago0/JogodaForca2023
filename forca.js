@@ -1,10 +1,10 @@
-var palavras = ['VALDEZ', 'BERGAMOTA', 'ASH', 'TITANIC', 'SURREAL', 'TELESCOPIO'];
-var qtnErros = 0;
-var acertos = 0;
-var tentativas = "";
-var palavraSecreta = palavras[Math.floor(Math.random() * 6)];
+let palavras = ['VALDEZ', 'BERGAMOTA', 'ASH', 'TITANIC', 'SURREAL', 'TELESCOPIO'];
+let qtnErros = 0;
+let acertos = 0;
+let tentativas = "";
+let palavraSecreta = palavras[Math.floor(Math.random() * 6)];
 let mudarDescricao = document.getElementById("descricao");
-let mudarDicas = document.getElementById("dicas");
+
 
 
 const canvas = document.getElementById("forca");
@@ -57,7 +57,7 @@ function verificaFimJogo() {
 	if (acertos == palavraSecreta.length) {
 		ctx.font = "20px Arial";
 	    window.onkeypress = null;
-		mudarDescricao.innerHTML = "Parabéns, você acertou! Aperte K para reiniciar o jogo";
+		mudarDescricao.innerHTML = "Parabéns, você acertou! Aperte K para reiniciar o jogo e Q para continuar a jogar";
 		return;
     }
 }
@@ -159,13 +159,24 @@ document.addEventListener('keydown', (e) => {
 	if (e.key === "k" || e.key === "K" ){
 		window.location.reload()
 	}
+	else if (e.key === "q" || e.key === "Q"){
+		acertos++;
+	}
 });
 	
-function dicas(numero){
-	return palavraSecreta[numero];
+//dicas de cada palavra
+let dicas = {
+	'VALDEZ': 'Sobrenome de um personagem da saga de livros de Heróis do Olimpo',
+	'BERGAMOTA':'Nome sulista para a fruta tangerina',
+	'ASH': 'Nome de um personagem de Banana Fish',
+	'TELESCOPIO': 'Ferramenta utilizada para ver planetas',
+	'SURREAL': 'Algo extraordinário',
+	'TITANIC': 'Nome de um barco que carrega um histórico de grande tragédia para a humanidade'
 }
 
-function darDicas(){
-	if ()
-}
-mudarDicas.innerHTML = "Nome sulista da tangerina";
+//as dicas estão inclusas na palavra secreta
+let dica = dicas[palavraSecreta];
+
+//mudar a dica no html
+let mudarDica = document.getElementById("dicas");
+mudarDica.innerHTML = dica;

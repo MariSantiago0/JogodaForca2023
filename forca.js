@@ -2,7 +2,7 @@ let palavras = ['VALDEZ', 'BERGAMOTA', 'ASH', 'TITANIC', 'SURREAL', 'TELESCOPIO'
 let qtnErros = 0;
 let acertos = 0;
 let tentativas = "";
-let palavraSecreta = palavras[Math.floor(Math.random() * 6)];
+let dica = dicas[palavras];
 let mudarDescricao = document.getElementById("descricao");
 
 
@@ -20,12 +20,12 @@ window.onkeypress = teclaPressionada;
 
 // colocar a letra na palavra se for a certa, se não for não é inclusa na palavra mas sim como tentativa e desenha uma parte do boneco
 function teclaPressionada() {
-	if (!tentativas.includes(event.key) && palavraSecreta.includes((event.key).toUpperCase())) {
+	if (!tentativas.includes(e.key) && palavras.includes((e.key).toUpperCase())) {
 		addTentativa();
-		for (var i = 0; i < palavraSecreta.length; i++) {
-			if (palavraSecreta[i] == (event.key).toUpperCase()) {
+		for (let i = 0; i < palavras.length; i++) {
+			if (palavras[i] == (e.key).toUpperCase()) {
 				ctx.font = "35px Arial";
-				ctx.fillText((event.key).toUpperCase(), 20 + (35 * i), 200);
+				ctx.fillText((e.key).toUpperCase(), 20 + (35 * i), 200);
 				acertos++;
 			}
 		}
@@ -34,32 +34,35 @@ function teclaPressionada() {
 		qtnErros++;
 		desenharBoneco(qtnErros);
 	}
-	verificaFimJogo();
+	verificaJogo();
 }
 
 //Inclui a letra errada como tentativa
 function addTentativa() {
-	if (!tentativas.includes(event.key)){
-		tentativas = tentativas + event.key;
+	if (!tentativas.includes(e.key)){
+		tentativas = tentativas + e.key;
 		ctx.font = "25px Arial";
-		ctx.fillText("	Tentativas: " + tentativas.toUpperCase(), 25, 285);
+		ctx.fillText("Tentativas: " + tentativas.toUpperCase(), 25, 285);
 	}
 }
 
 //Verifica se o boneco esta inteiro ou a palavra esta completa
-function verificaFimJogo() {
+function verificaJogo() {
 	if (qtnErros >=6) {
 		ctx.font = "20px Arial";
 		ctx.fillText("Fim do Jogo! a palavra era: " + palavraSecreta, 200, 100);
 		window.onkeypress = null;
 		return;
 	}
-	if (acertos == palavraSecreta.length) {
+	if (acertos == palavraSecreta.length ) {
 		ctx.font = "20px Arial";
 	    window.onkeypress = null;
-		mudarDescricao.innerHTML = "Parabéns, você acertou! Aperte K para reiniciar o jogo e Q para continuar a jogar";
+		 
 		return;
     }
+	else if (acertos >= 6){
+		mudarDescricao.innerHTML = "Parabéns, você acertou! Aperte K para reiniciar o jogo";
+	}
 }
 
 function desenharPoste() {
@@ -180,3 +183,17 @@ let dica = dicas[palavraSecreta];
 //mudar a dica no html
 let mudarDica = document.getElementById("dicas");
 mudarDica.innerHTML = dica;
+
+
+function proximaPalavra(){
+	let palavraAtual = 0;
+	let pontos = 0;
+	palavraAtual++;
+
+	if(palavraAtual = 2){
+		pontos++;
+		dica++;
+	}
+    
+}
+

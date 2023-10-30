@@ -180,17 +180,3 @@ let dica = dicas[palavraSecreta];
 //mudar a dica no html
 let mudarDica = document.getElementById("dicas");
 mudarDica.innerHTML = dica;
-
-
-function proximaPalavra(){
-	let palavraAtual = 0;
-	let pontos = 0;
-	palavraAtual++;
-
-	if(palavraAtual = 2){
-		pontos++;
-		dica++;
-	}
-    
-}
-

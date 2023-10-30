@@ -2,7 +2,7 @@ let palavras = ['VALDEZ', 'BERGAMOTA', 'ASH', 'TITANIC', 'SURREAL', 'TELESCOPIO'
 let qtnErros = 0;
 let acertos = 0;
 let tentativas = "";
-let dica = dicas[palavras];
+let palavraSecreta = palavras[Math.floor(Math.random() * 6)];
 let mudarDescricao = document.getElementById("descricao");
 
 
@@ -20,12 +20,12 @@ window.onkeypress = teclaPressionada;
 
 // colocar a letra na palavra se for a certa, se não for não é inclusa na palavra mas sim como tentativa e desenha uma parte do boneco
 function teclaPressionada() {
-	if (!tentativas.includes(e.key) && palavras.includes((e.key).toUpperCase())) {
+	if (!tentativas.includes(event.key) && palavraSecreta.includes((event.key).toUpperCase())) {
 		addTentativa();
-		for (let i = 0; i < palavras.length; i++) {
-			if (palavras[i] == (e.key).toUpperCase()) {
+		for (let i = 0; i < palavraSecreta.length; i++) {
+			if (palavraSecreta[i] == (event.key).toUpperCase()) {
 				ctx.font = "35px Arial";
-				ctx.fillText((e.key).toUpperCase(), 20 + (35 * i), 200);
+				ctx.fillText((event.key).toUpperCase(), 20 + (35 * i), 200);
 				acertos++;
 			}
 		}
@@ -39,8 +39,8 @@ function teclaPressionada() {
 
 //Inclui a letra errada como tentativa
 function addTentativa() {
-	if (!tentativas.includes(e.key)){
-		tentativas = tentativas + e.key;
+	if (!tentativas.includes(event.key)){
+		tentativas = tentativas + event.key;
 		ctx.font = "25px Arial";
 		ctx.fillText("Tentativas: " + tentativas.toUpperCase(), 25, 285);
 	}
@@ -57,11 +57,8 @@ function verificaJogo() {
 	if (acertos == palavraSecreta.length ) {
 		ctx.font = "20px Arial";
 	    window.onkeypress = null;
-		 
-		return;
-    }
-	else if (acertos >= 6){
 		mudarDescricao.innerHTML = "Parabéns, você acertou! Aperte K para reiniciar o jogo";
+		return;
 	}
 }
 

@@ -159,9 +159,6 @@ document.addEventListener('keydown', (e) => {
 	if (e.key === "k" || e.key === "K" ){
 		window.location.reload()
 	}
-	else if (e.key === "q" || e.key === "Q"){
-		acertos++;
-	}
 });
 	
 //dicas de cada palavra

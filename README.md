@@ -15,7 +15,7 @@ Um evento é definido para que, quando a tecla K é apertada. Em seguida, a let 
 ## Diagramas
 <img src="img/diagramaclasses.png">
 <img src="img/usecase.png">
-<img src="img/usecasedocm.png">
+<img src="img/atividade.png">
 
 ## Autores
 Mariana Santiago e Yuri Telis

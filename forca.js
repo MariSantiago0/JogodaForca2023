@@ -57,7 +57,7 @@ function verificaJogo() {
 	if (acertos == palavraSecreta.length ) {
 		ctx.font = "20px Arial";
 	    window.onkeypress = null;
-		mudarDescricao.innerHTML = "Parabéns, você acertou! Aperte K para reiniciar o jogo";
+		ctx.fillText("Parabéns, você acertou! Aperte K para reiniciar o jogo", 200, 100);
 		return;
 	}
 }
